@@ -10,17 +10,45 @@ EMAIL_FROM = os.getenv("EMAIL_FROM")
 EMAIL_TO = os.getenv("EMAIL_TO")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
-msg = MIMEMultipart()
-msg["From"] = EMAIL_FROM
-msg["To"] = EMAIL_TO
-msg["Subject"] = "Scheduled Email from GitHub Actions"
+def send_email():
+    msg = MIMEMultipart()
+    msg["From"] = EMAIL_FROM
+    msg["To"] = EMAIL_TO
+    msg["Subject"] = "Scheduled Email from GitHub Actions"
 
-msg.attach(MIMEText("Hello,\n\nEmail sent from GitHub Actions.\n\nThanks", "plain"))
+    body = """Hello Team,
 
-server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-server.starttls()
-server.login(EMAIL_FROM, EMAIL_PASSWORD)
-server.send_message(msg)
-server.quit()
+This is an automated email triggered from GitHub Actions.
 
-print("Email sent successfully")
+Regards,
+Automation Bot
+"""
+    msg.attach(MIMEText(body, "plain"))
+
+    try:
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+
+        # Step 1: Identify ourselves
+        server.ehlo()
+
+        # Step 2: Secure connection
+        server.starttls()
+
+        # Step 3: Re-identify after TLS
+        server.ehlo()
+
+        # Step 4: Login
+        server.login(EMAIL_FROM, EMAIL_PASSWORD)
+
+        # Step 5: Send mail
+        server.send_message(msg)
+
+        server.quit()
+        print("Email sent successfully")
+
+    except Exception as e:
+        print("Failed to send email")
+        print(e)
+
+if __name__ == "__main__":
+    send_email()
