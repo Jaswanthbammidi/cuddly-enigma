@@ -2,7 +2,7 @@ name: Scheduled Email Sender
 
 on:
   schedule:
-    - cron: "25 18 * * *"   # Runs daily at 06:00 UTC
+    - cron: "35 18 * * *"   # Runs daily at 06:00 UTC
   workflow_dispatch:      # Manual trigger option
 
 jobs:
