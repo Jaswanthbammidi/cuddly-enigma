@@ -1,5 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv()
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -10,9 +8,9 @@ SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 
 # Read from GitHub Secrets / Environment Variables
-EMAIL_FROM = os.getenv("EMAIL_FROM")
-EMAIL_TO = os.getenv("EMAIL_TO")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+EMAIL_FROM = "bvenkatasaijaswanth@gmail.com"
+EMAIL_TO = "sankarakhil143@gmail.com"
+EMAIL_PASSWORD = "simwpeuckldgfjew"
 
 def send_email():
     # Create email
