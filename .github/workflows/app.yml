@@ -2,7 +2,7 @@ name: Scheduled Email Sender
 
 on:
   schedule:
-    - cron: "30 07 * * *"   # Runs daily at 06:00 UTC
+    - cron: "* * * * *"   # Runs daily at 06:00 UTC
   workflow_dispatch:      # Manual trigger option
 
 jobs:
@@ -23,5 +23,6 @@ jobs:
           python -m pip install --upgrade pip
 
       - name: Run email script
+      
         run: |
           python script.py
