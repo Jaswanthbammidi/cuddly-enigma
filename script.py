@@ -20,12 +20,12 @@ def send_email():
     msg["Subject"] = "Scheduled Email from GitHub Actions"
 
     body = """
-Hi Team,
+Hi Broooooooooooo,
 
-This is an automated email triggered by GitHub Actions using a scheduled pipeline.
+Time ayendiiii padukoooo brooooo.
 
 Regards,
-Automation Bot
+Ojas Gambheera
 """
 
     msg.attach(MIMEText(body, "plain"))
