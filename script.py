@@ -19,10 +19,9 @@ EMAIL_TO = [
 EMAIL_PASSWORD = "simwpeuckldgfjew"
 
 def send_email():
-    # Create email
     msg = MIMEMultipart()
     msg["From"] = EMAIL_FROM
-    msg["To"] = EMAIL_TO
+    msg["To"] = ", ".join(EMAIL_TO)
     msg["Subject"] = "Message to My Dearest Friend"
 
     body = """
@@ -37,11 +36,12 @@ Ojas Gambheera
     msg.attach(MIMEText(body, "plain"))
 
     try:
-        # Connect to SMTP server
         server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
         server.starttls()
         server.login(EMAIL_FROM, EMAIL_PASSWORD)
-        server.send_message(msg)
+
+        server.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
+
         server.quit()
 
         print("Email sent successfully")
