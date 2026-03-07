@@ -2,7 +2,7 @@ name: Scheduled Email Sender
 
 on:
   schedule:
-    - cron: '23 13 * * *'
+    - cron: '20 19 * * *'
   workflow_dispatch:
 
 jobs:
