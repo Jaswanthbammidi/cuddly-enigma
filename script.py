@@ -9,7 +9,13 @@ SMTP_PORT = 587
 
 # Read from GitHub Secrets / Environment Variables
 EMAIL_FROM = "bvenkatasaijaswanth@gmail.com"
-EMAIL_TO = "sankarakhil143@gmail.com"
+EMAIL_TO = [
+    "vbammidi@gitam.in",
+    "bvudadhu@gitam.in",
+    "pkilli@gitam.in",
+    "bsahu@gitam.in"
+
+]
 EMAIL_PASSWORD = "simwpeuckldgfjew"
 
 def send_email():
@@ -17,7 +23,7 @@ def send_email():
     msg = MIMEMultipart()
     msg["From"] = EMAIL_FROM
     msg["To"] = EMAIL_TO
-    msg["Subject"] = "Scheduled Email from GitHub Actions"
+    msg["Subject"] = "Message to My Dearest Friend"
 
     body = """
 Hi Broooooooooooo,
